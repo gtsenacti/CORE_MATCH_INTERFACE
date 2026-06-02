@@ -1,3 +1,31 @@
+// Variável global da montagem
+let montagem = {
+    processador: "",
+    placaMae: "",
+    memoria: "",
+    placaVideo: ""
+};
+
+// Função que seleciona o processador
+function selecionarProcessador(nome) {
+    montagem.processador = nome;
+}
+
+// Função que seleciona a placa-mãe
+function selecionarPlacaMae(nome) {
+    montagem.placaMae = nome;
+}
+
+// Função que seleciona a memória
+function selecionarMemoria(nome) {
+    montagem.memoria = nome;
+}
+
+// Função que seleciona a placa vídeo
+function selecionarPlacaVideo(nome) {
+    montagem.placaVideo = nome;
+}
+
 async function verificarCompatibilidade(){
 
     const resposta =
@@ -27,8 +55,14 @@ async function verificarCompatibilidade(){
         }
     );
 
-    const resultado =
-    await resposta.json();
+    const resultado = await resposta.json();
+
+    localStorage.setItem(
+    "resultadoIA",
+    JSON.stringify(resultado)
+);
+
+window.location.href = "montagem.html";
 
     console.log(resultado);
 
